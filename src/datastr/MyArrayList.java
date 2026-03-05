@@ -165,14 +165,14 @@ public class MyArrayList {
 		
 		for(int i = 0; i < arrayListForIndexes.size() ; i++) {
 			int nextElementIndex = arrayListForIndexes.get(i)+1;
-			nextElements[indexForNextElementArray] = list[nextElementIndex];\
+			nextElements[indexForNextElementArray] = list[nextElementIndex];
 			indexForNextElementArray++;
 		}
 
 		return nextElements;
 	}
 
-	public void sort() {
+	public void sort() throws Exception {
 		if(indexArrayList.isEmpty()) {
 			throw new Exception("Meklētais elements" + element + "neatrodas saraksta");
 		}
@@ -187,9 +187,9 @@ public class MyArrayList {
 		}
 	}
 
-	public void print() {
-				if(indexArrayList.isEmpty()) {
-			throw new Exception("Nav iespējams izvadīt sarakstu, jo tas ir tukšs ");
+	public void print() throws Exception{
+			if(indexArrayList.isEmpty()) {
+				throw new Exception("Nav iespējams izvadīt sarakstu, jo tas ir tukšs ");
 		}
 
 			for(int i=0;i<howManyElements;i++) {
