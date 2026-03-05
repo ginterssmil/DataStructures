@@ -41,6 +41,10 @@ public class MyArrayList {
 		return (howManyElements == size);
 	}
 	
+	public int getHowManyElements() {
+		return howManyElements;
+	}  
+
 	//resize
 	private void resize() {
 		int newSize = (howManyElements < 200) ? (size*2) : (int)(size *1.5);
@@ -90,4 +94,6 @@ public class MyArrayList {
 		list[given_index] = element
 		howManyElements++;
 	}
+
+	
 }
