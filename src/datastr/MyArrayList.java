@@ -171,7 +171,20 @@ public class MyArrayList {
 		return nextElements;
 	}
 
-
+	public void sort() {
+		if(indexArrayList.isEmpty()) {
+			throw new Exception("Meklētais elements" + element + "neatrodas saraksta");
+		}
+		for(int i=0;i<howManyElements;i++) {
+			for(int j = 0; j<howManyElements;j++) {
+				if (list[i] > list[j]) {
+					char temp = list[i];
+					list[i] = list[j];
+					list[j] = temp;
+				}
+			}
+		}
+	}
 
 
 
