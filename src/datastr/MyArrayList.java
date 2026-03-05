@@ -1,5 +1,7 @@
 package datastr;
 
+import java.util.ArrayList;
+
 public class MyArrayList {
 
 	private char[] list;
@@ -115,7 +117,7 @@ public class MyArrayList {
 		list[howManyElements--] = ' ';
 	}
 
-	public char getElement(int given_index) throws IllegalArgumentException {
+	public char get(int given_index) throws IllegalArgumentException {
 		if(isEmpty()) {
 			throw new IllegalArgumentException("Nav iespējams iegūt elementu, jo saraksts ir tukšs.");
 		}
@@ -149,8 +151,28 @@ public class MyArrayList {
 		return indexArrayList;
 	}
 	
+	public char[] getNextElements(char element) throws Exception{
+		ArrayList<Integer> arrayListForIndexes = search(element);
+		
+		int howManyNextElements = arrayListForIndexes.size();
+		if(arrayListForIndexes.get(arrayListForIndexes.size()-1) == howManyElements) {
+			howManyNextElements--;
+		}
+		
+		char[] nextElements = new char[howManyNextElements];
+		int indexForNextElementArray = 0;
+		
+		for(int i = 0; i < arrayListForIndexes.size() ; i++) {
+			int nextElementIndex = arrayListForIndexes.get(i)+1;
+			nextElements[indexForNextElementArray] = list[nextElementIndex];\
+			indexForNextElementArray++;
+		}
+
+		return nextElements;
+	}
 
 
 
-	
+
+
 }
