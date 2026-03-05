@@ -1,5 +1,6 @@
 package datastr;
 
+import java.beans.DefaultPersistenceDelegate;
 import java.util.ArrayList;
 
 public class MyArrayList {
@@ -186,6 +187,24 @@ public class MyArrayList {
 		}
 	}
 
+	public void print() {
+				if(indexArrayList.isEmpty()) {
+			throw new Exception("Nav iespējams izvadīt sarakstu, jo tas ir tukšs ");
+		}
 
+			for(int i=0;i<howManyElements;i++) {
+				System.out.println(list[i] + " ");
+			}
+			System.out.println();
+		
+	}
+
+	public void makeEmpty() {
+		list = null;// atkabina refrenci no datiem, zaudē datus
+		System.gc();// iztīra datus,   šīs 2 rindas var nerakstīt
+		howManyElements=0;
+		size = DEFAULT_SIZE;
+		list = new char[size];
+	}
 
 }
