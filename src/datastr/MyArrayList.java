@@ -75,13 +75,13 @@ public class MyArrayList {
 			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indekss ir negatīvs")
 		} 
 		if(given_index > howManyElements ) {
-			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indeks ir pārāk liels")
+			throw new IllegalArgumentException("Nav iespejams ievietot elementu,  jo indekss ir lielāks par elementu skait")
 		}
 
 
 		if(given_index == howManyElements) {
 			add(element);
-			return
+			return;
 		}
 
 		if(isFull()) {
@@ -89,9 +89,9 @@ public class MyArrayList {
 		}
 
 		for (int i = howManyElements ; i > given_index ; i--) {
-			list[i] = list[i-1]
+			list[i] = list[i-1];
 		}
-		list[given_index] = element
+		list[given_index] = element;
 		howManyElements++;
 	}
 
@@ -103,15 +103,29 @@ public class MyArrayList {
 			throw new IllegalArgumentException("Nav iespejams dzēst elementu, jo indekss ir negatīvs")
 		} 
 		if(given_index => howManyElements ) {
-			throw new IllegalArgumentException("Nav iespejams dzēst elementu, jo indeks ir pārāk liels")
+			throw new IllegalArgumentException("Nav iespejams dzēst elementu,  jo indekss ir lielāks vai vienāds ar elementu skait")
 		}
 
 
 
 		for (int i = given_index ; i < howManyElements ; i++) {
-			list[i] = list[i+1]
+			list[i] = list[i+1];
 		}
 		howManyElements--;
+	}
+
+	public char getElement(given_index) throws IllegalArgumentException {
+		if(isEmpty()) {
+			throw new IllegalArgumentException("Nav iespējams iegūt elementu, jo masīvs ir tukšs.")
+		}
+		if(given_index < 0) {
+			throw new IllegalArgumentException("Nav iespejams iegūt elementu, jo indekss ir negatīvs")
+		} 
+		if(given_index => howManyElements ) {
+			throw new IllegalArgumentException("Nav iespejams iegūt elementu, jo indekss ir lielāks vai vienāds ar elementu skait")
+		}
+
+		return list[given_index];
 
 	}
 	
