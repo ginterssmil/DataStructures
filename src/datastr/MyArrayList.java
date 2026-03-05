@@ -95,5 +95,24 @@ public class MyArrayList {
 		howManyElements++;
 	}
 
+	public void remove(int given_index) throws IllegalArgumentException {
+		if(isEmpty()) {
+			throw new IllegalArgumentException("Nav iespējams dzēst elementu, jo masīvs ir tukšs.")
+		}
+		if(given_index < 0) {
+			throw new IllegalArgumentException("Nav iespejams dzēst elementu, jo indekss ir negatīvs")
+		} 
+		if(given_index => howManyElements ) {
+			throw new IllegalArgumentException("Nav iespejams dzēst elementu, jo indeks ir pārāk liels")
+		}
+
+
+
+		for (int i = given_index ; i < howManyElements ; i++) {
+			list[i] = list[i+1]
+		}
+		howManyElements--;
+
+	}
 	
 }
