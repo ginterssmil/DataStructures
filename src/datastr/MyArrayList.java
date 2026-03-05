@@ -72,10 +72,10 @@ public class MyArrayList {
 	//palielinat howManyElements
 	public void add(char element, int given_index) throws IllegalArgumentException{
 		if(given_index < 0) {
-			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indekss ir negatīvs")
+			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indekss ir negatīvs");
 		} 
 		if(given_index > howManyElements ) {
-			throw new IllegalArgumentException("Nav iespejams ievietot elementu,  jo indekss ir lielāks par elementu skait")
+			throw new IllegalArgumentException("Nav iespejams ievietot elementu,  jo indekss ir lielāks par elementu skait");
 		}
 
 
@@ -95,17 +95,18 @@ public class MyArrayList {
 		howManyElements++;
 	}
 
-	public void remove(int given_index) throws IllegalArgumentException {
+	public void remove(int given_index) throws Exception {
 		if(isEmpty()) {
-			throw new IllegalArgumentException("Nav iespējams dzēst elementu, jo masīvs ir tukšs.")
+			throw new Exception("Nav iespējams dzēst elementu, jo saraksts ir tukšs.");
 		}
 		if(given_index < 0) {
-			throw new IllegalArgumentException("Nav iespejams dzēst elementu, jo indekss ir negatīvs")
+			throw new IllegalArgumentException("Nav iespejams dzēst elementu, jo indekss ir negatīvs");
 		} 
-		if(given_index => howManyElements ) {
-			throw new IllegalArgumentException("Nav iespejams dzēst elementu,  jo indekss ir lielāks vai vienāds ar elementu skait")
+		if(given_index >= howManyElements ) {
+			throw new IllegalArgumentException("Nav iespejams dzēst elementu,  jo indekss ir lielāks vai vienāds ar elementu skait");
 		}
 
+		
 
 
 		for (int i = given_index ; i < howManyElements ; i++) {
@@ -114,19 +115,42 @@ public class MyArrayList {
 		list[howManyElements--] = ' ';
 	}
 
-	public char getElement(given_index) throws IllegalArgumentException {
+	public char getElement(int given_index) throws IllegalArgumentException {
 		if(isEmpty()) {
-			throw new IllegalArgumentException("Nav iespējams iegūt elementu, jo masīvs ir tukšs.")
+			throw new IllegalArgumentException("Nav iespējams iegūt elementu, jo saraksts ir tukšs.");
 		}
 		if(given_index < 0) {
-			throw new IllegalArgumentException("Nav iespejams iegūt elementu, jo indekss ir negatīvs")
+			throw new IllegalArgumentException("Nav iespejams iegūt elementu, jo indekss ir negatīvs");
 		} 
-		if(given_index => howManyElements ) {
-			throw new IllegalArgumentException("Nav iespejams iegūt elementu, jo indekss ir lielāks vai vienāds ar elementu skait")
+		if(given_index >= howManyElements ) {
+			throw new IllegalArgumentException("Nav iespejams iegūt elementu, jo indekss ir lielāks vai vienāds ar elementu skait");
 		}
 
 		return list[given_index];
 
 	}
+
+	public ArrayList<Integer> search(char element) throws Exception{
+			if(isEmpty()) {
+				throw new Exception("Nav iespējams veikt elementa meklēšanu, jo saraksts ir tukšs.");
+		}
+
+		ArrayList<Integer> indexArrayList = new  ArrayList<Integer>();
+		for(int i=0;i<howManyElements;i++) {
+			if (list[i] == element) {
+				indexArrayList.add(i);
+			}
+		}
+
+		if(indexArrayList.isEmpty()) {
+			throw new Exception("Meklētais elements" + element + "neatrodas saraksta");
+		}
+
+		return indexArrayList;
+	}
+	
+
+
+
 	
 }
