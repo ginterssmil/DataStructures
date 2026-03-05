@@ -111,7 +111,7 @@ public class MyArrayList {
 		for (int i = given_index ; i < howManyElements ; i++) {
 			list[i] = list[i+1];
 		}
-		howManyElements--;
+		list[howManyElements--] = ' ';
 	}
 
 	public char getElement(given_index) throws IllegalArgumentException {
