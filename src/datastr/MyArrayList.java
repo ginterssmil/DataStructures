@@ -63,4 +63,31 @@ public class MyArrayList {
 		list[howManyElements++] = element;
 		//howManyElements++   tiek izdarits ieprekseja rinda
 	}
+	// nav negativs, nav lieaks par howManyElements, masivs nav pilns (izsaukt resize()), 
+	// vekit elementu parkopesanu no beigam par vienu indeksu uz prieksu, bet lids indeksam, kura gribas pievienot jauno ele
+	//palielinat howManyElements
+	public void add(char element, int given_index) throws IllegalArgumentException{
+		if(given_index < 0) {
+			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indekss ir negatīvs")
+		} 
+		if(given_index > howManyElements ) {
+			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indeks ir pārāk liels")
+		}
+
+
+		if(given_index == howManyElements) {
+			add(element);
+			return
+		}
+
+		if(isFull()) {
+			resize();
+		}
+
+		for (int i = howManyElements ; i > given_index ; i--) {
+			list[i] = list[i-1]
+		}
+		list[given_index] = element
+		howManyElements++;
+	}
 }
