@@ -1,6 +1,5 @@
 package datastr;
 
-import java.beans.DefaultPersistenceDelegate;
 import java.util.ArrayList;
 
 public class MyArrayList {
@@ -173,8 +172,8 @@ public class MyArrayList {
 	}
 
 	public void sort() throws Exception {
-		if(indexArrayList.isEmpty()) {
-			throw new Exception("Meklētais elements" + element + "neatrodas saraksta");
+		if(isEmpty()) {
+			throw new Exception("Nav iespējams kārtot sarakstu, jo tas ir tukšs.");
 		}
 		for(int i=0;i<howManyElements;i++) {
 			for(int j = 0; j<howManyElements;j++) {
@@ -188,14 +187,13 @@ public class MyArrayList {
 	}
 
 	public void print() throws Exception{
-			if(indexArrayList.isEmpty()) {
-				throw new Exception("Nav iespējams izvadīt sarakstu, jo tas ir tukšs ");
+		if(isEmpty()) {
+			throw new Exception("Nav iespējams izvadīt sarakstu, jo tas ir tukšs ");
 		}
-
-			for(int i=0;i<howManyElements;i++) {
-				System.out.println(list[i] + " ");
-			}
-			System.out.println();
+		for(int i = 0 ; i < howManyElements ; i++) {
+			System.out.println(list[i] + " ");
+		}
+		System.out.println();
 		
 	}
 
