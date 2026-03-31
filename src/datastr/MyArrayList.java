@@ -2,16 +2,16 @@ package datastr;
 
 import java.util.ArrayList;
 
-public class MyArrayList {
+public class MyArrayList<Ttype> {
 
-	private char[] list;
+	private Ttype[] list;
 	private int howManyElements = 0;
 	private final int DEFAULT_SIZE = 8;
 	private int size = DEFAULT_SIZE;
 	
 	//konstruktori
 	public MyArrayList() {
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 	}
 	
 	public MyArrayList(int inputSize) {
@@ -19,7 +19,7 @@ public class MyArrayList {
 			size = inputSize;
 		}
 		
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 	}
 	
 	
@@ -50,7 +50,7 @@ public class MyArrayList {
 	//resize
 	private void resize() {
 		int newSize = (howManyElements < 200) ? (size*2) : (int)(size *1.5);
-		char[] newList = new char[newSize];
+		Ttype[] newList = (Ttype[]) new Object[newSize];
 		
 		for (int i=0;i < howManyElements; i++) {
 			newList[i] = list[i];
@@ -61,7 +61,7 @@ public class MyArrayList {
 		System.gc();
 	}
 	
-	public void add(char element) {
+	public void add(Ttype element) {
 		if(isFull()) {
 			resize();
 		}
@@ -72,7 +72,7 @@ public class MyArrayList {
 	// nav negativs, nav lieaks par howManyElements, masivs nav pilns (izsaukt resize()), 
 	// vekit elementu parkopesanu no beigam par vienu indeksu uz prieksu, bet lids indeksam, kura gribas pievienot jauno ele
 	//palielinat howManyElements
-	public void add(char element, int given_index) throws IllegalArgumentException{
+	public void add(Ttype element, int given_index) throws IllegalArgumentException{
 		if(given_index < 0) {
 			throw new IllegalArgumentException("Nav iespejams ievietot elementu, jo indekss ir negatīvs");
 		} 
@@ -114,10 +114,10 @@ public class MyArrayList {
 		for (int i = given_index ; i < howManyElements ; i++) {
 			list[i] = list[i+1];
 		}
-		list[howManyElements--] = ' ';
+		list[howManyElements--] = null;
 	}
 
-	public char get(int given_index) throws IllegalArgumentException {
+	public Ttype get(int given_index) throws IllegalArgumentException {
 		if(isEmpty()) {
 			throw new IllegalArgumentException("Nav iespējams iegūt elementu, jo saraksts ir tukšs.");
 		}
@@ -132,14 +132,14 @@ public class MyArrayList {
 
 	}
 
-	public ArrayList<Integer> search(char element) throws Exception{
+	public ArrayList<Integer> search(Ttype element) throws Exception{
 			if(isEmpty()) {
 				throw new Exception("Nav iespējams veikt elementa meklēšanu, jo saraksts ir tukšs.");
 		}
 
 		ArrayList<Integer> indexArrayList = new  ArrayList<Integer>();
 		for(int i=0;i<howManyElements;i++) {
-			if (list[i] == element) {
+			if (list[i].equals(element)) {
 				indexArrayList.add(i);
 			}
 		}
@@ -151,7 +151,7 @@ public class MyArrayList {
 		return indexArrayList;
 	}
 	
-	public char[] getNextElements(char element) throws Exception{
+	public Ttype[] getNextElements(Ttype element) throws Exception{
 		ArrayList<Integer> arrayListForIndexes = search(element);
 		
 		int howManyNextElements = arrayListForIndexes.size();
@@ -159,7 +159,7 @@ public class MyArrayList {
 			howManyNextElements--;
 		}
 		
-		char[] nextElements = new char[howManyNextElements];
+		Ttype[] nextElements = (Ttype[]) new Object[howManyNextElements];
 		int indexForNextElementArray = 0;
 		
 		for(int i = 0; i < arrayListForIndexes.size() ; i++) {
@@ -177,8 +177,8 @@ public class MyArrayList {
 		}
 		for(int i=0;i<howManyElements;i++) {
 			for(int j = 0; j<howManyElements;j++) {
-				if (list[i] > list[j]) {
-					char temp = list[i];
+				if (((Comparable)list[i]).compareTo(list[j]) > 0) {
+					Ttype temp = list[i];
 					list[i] = list[j];
 					list[j] = temp;
 				}
@@ -202,7 +202,7 @@ public class MyArrayList {
 		System.gc();// iztīra datus,   šīs 2 rindas var nerakstīt
 		howManyElements=0;
 		size = DEFAULT_SIZE;
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 	}
 
 }
