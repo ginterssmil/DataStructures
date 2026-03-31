@@ -1,4 +1,4 @@
-package datastr;
+package model;
 
 import java.util.ArrayList;
 
