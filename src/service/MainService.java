@@ -46,14 +46,17 @@ public class MainService {
         allStudents.print();
         System.out.println(allStudents.search(s3));
         System.out.println(Arrays.toString(allStudents.getNextElements(s3)));
+        
         System.out.println("==========sorted======");
         allStudents.sort();
         allStudents.print();
-                System.out.println("removed 1 ele");
 
+        System.out.println("remove 1 ele");
         allStudents.remove(0);
+
         System.out.println("==========howManyElements======");
         System.out.println(allStudents.getHowManyElements());
+
         System.out.println("==========makeEmpty======");
         allStudents.makeEmpty();
         allStudents.print();
